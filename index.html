@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
+    <link rel="stylesheet" href="./reset.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
+    <title>レスポンシブデザインページ</title>
+</head>
+<body>
+
+    <header class="header">
+        <h1 class="title">
+            <span>T</span>
+            <span>a</span>
+            <span>r</span>
+            <span>o</span>
+            <span>D</span>
+            <span>e</span>
+            <span>s</span>
+            <span>u</span>
+        </h1>
+       <div class="menu-humberger js-toggle-icon-menu">
+           <!-- ハンバーガーのアイコン -->
+           <span  class="humberger-bar"></span>
+           <span  class="humberger-bar"></span>
+           <span  class="humberger-bar"></span>
+       </div>
+
+       <nav class="nav-menu js-toggle-menu">
+          <ul class="menu">
+          </ul>
+       </nav>
+    </header>
+
+
+    <main>
+        <!-- ヒーローバナー -->
+        <section class="top-animation">
+            <div class="top-animation-container top-animation-blue">
+                <input class="acd-check" id="acd-check1" type="checkbox">
+                <label for="acd-check1" class="acd-label acd-label-blue js-label">
+                    WORK:<br>
+                    <i class="fas fa-angle-down"></i>
+                </label>
+                <div class="acd-content acd-content-blue">
+                    <div class="acd-content-container acd-content-container-slider js-slider-container">
+                          <i class="fa fa-angle-left fa-3x slider__nav slider__prev js-slide-prev" aria-hidden="true"></i>
+                          <i class="fa fa-angle-right fa-3x slider__nav slider__next js-slide-next" aria-hidden="true"></i>
+                          <ul class="acd-content-container-slider-img js-slider">
+                            <li class="work-img js-img work-img1" alt=""><img class="mywork" src="./images/shop.jpeg"  alt=""></li>
+                            <li class="work-img js-img work-img2" alt=""><img class="mywork" src="./images/task.jpeg"  alt=""></li>
+                            <li class="work-img js-img work-img3" alt=""><img class="mywork" src="./images/wordpress.jpeg"  alt=""></li>
+                            <li class="work-img js-img work-img4" alt=""><img class="mywork" src="./images/continue.jpeg"  alt=""></li>
+                          </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="top-animation-container top-animation-container-thin  top-animation-white">
+               <div class="top-animation-color"></div>
+            </div>
+
+
+            <div class="top-animation-container top-animation-red">
+                <input class="acd-check" id="acd-check2" type="checkbox">
+                <label for="acd-check2" class="acd-label acd-label-red">
+                    ABOUT:<br>
+                    <i class="fas fa-angle-down"></i>
+                </label>
+                <div class="acd-content acd-content-red">
+                    <!-- コンテンツ -->
+                    <div class="acd-content-container">
+                        <img class="acd-content-prof" src="images/jibun.jpeg">
+                        <div class="acd-content-detail">
+                            <p> 2019年1月からwebの勉強をはじめ、
+                                web業界を目指している井上道隆です。
+                                フロントエンドエンジニアを目指しています。<br>
+                                ブログ-><a href="https://webmichi.hatenadiary.jp/about">https://webmichi.hatenadiary.jp/about</a>
+                            </p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
+             <div class="top-animation-container top-animation-container-thin  top-animation-white">
+               <div class="top-animation-color"></div>
+            </div>
+
+
+            <div class="top-animation-container top-animation-blue">
+               <input class="acd-check" id="acd-check3" type="checkbox">
+                <label for="acd-check3" class="acd-label acd-label-blue">
+                    STATUS:<br>
+                    <i class="fas fa-angle-down"></i>
+                </label>
+                <div class="acd-content acd-content-blue">
+                   <div class="top-animation-container">
+                    <div class="top-animation-status">
+                        <i class="fas fa-5x fa-laptop"></i>
+                        <div class="acd-content-detail">
+                            <p> 
+                             HTML/CSS/Bootstrap/javascript/PHP/MySQL/Backbone.jsを学んでいます。
+                             サーバー側からフロント側まで幅広く、日々アウトプットを意識しています。
+                            </p>
+                        </div>
+                    </div>
+                   </div> 
+                </div>
+            </div>
+
+            <div class="top-animation-container top-animation-container-thin  top-animation-white">
+               <div class="top-animation-color"></div>
+            </div>
+
+           
+            <section id="work-detail">
+                    <div class="work-detail-title">
+                         <h1>WORK Detail:</h1>
+                    </div>
+                    <div class="work-wrap">
+                       <div class="swiper-container">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide"><img src="./images/shop1.jpeg" alt="Swiper01"></div>
+                                <div class="swiper-slide"><img src="./images/shop2.jpeg" alt="Swiper02"></div>
+                                <div class="swiper-slide"><img src="./images/shop3.jpeg" alt="Swiper03"></div>
+                                <div class="swiper-slide"><img src="./images/shop4.jpeg" alt="Swiper02"></div>
+                                <div class="swiper-slide"><img src="./images/shop5.jpeg" alt="Swiper02"></div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                            <div class="swiper-button-prev"></div>
+                            <div class="swiper-button-next"></div>
+                       </div>
+                       <div  class="work-comment">
+                           <p>
+                             HTML/CSS/Javascript/PHP/MySQLを使用したメルカリのようなもの。<br>
+                             出品,購入,お気に入り,その他編集ができるようにしています。
+                             ログインにはセッションを使いました。鬼気に入りにはAjax通信を使っています。
+                             ユーザー登録の代わりに、簡易なゲームでログインできるようにしています
+                             かかった時間:約300時間。
+                           </p>
+                       </div>
+                    </div>
+
+                    <div class="work-wrap">
+                       <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><img src="./images/task1.jpeg" alt="Swiper01"></div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                      </div>
+                      <div  class="work-comment">
+                          <p>
+                            HTML/CSS/Javascript/PHP/MySQLを使用下タスク保存ツール。<br>
+                            主にAjax通信の練習で作成しました。DBとの連携でデータの挿入,更新,削除,編集を非同期
+                            で行います。かかった時間:約30時間。
+                          </p>
+                       </div> 
+                    </div>
+        
+
+                    <div class="work-wrap">
+                       <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><img src="./images/portfolio1.jpeg" alt="Swiper01"></div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                      </div> 
+                      <div  class="work-comment">
+                        <p>
+                            HTML/CSSで作ったポートフォリオです。SCSS記法でレスポンシブデザインにしています。
+                            sassのコンパイルはyarnで管理しました。<br>
+                            アコーディオンパネルとトリコロールカラーでシンプルにデザインしました。
+                            Galaxy S5/iphone6.7.8/iphoneXに対応しています。<br>
+                            swiperライブラリと、jqueryで画像スライダーを作りました。
+                            反省点: CSSの設計　クラスの指定方法が統一出来ていない。<br>
+                            改善点: OOCSS,BEM,FLOCSSの違いを把握しておくこと。ipadや他のモバイル対応について学ぶ。<br>
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="work-wrap">
+                       <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><img src="./images/backtodo1.jpeg" alt="Swiper01"></div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                      </div> 
+                      <div  class="work-comment">
+                        <p>
+                            Backbone.jsでのTodoアプリです。jqueryとは違い、MVCのMVとは何かを意識しました。
+                            ブログに自分なりに感じた要点をまとめてみました。
+                           <a href="https://webmichi.hatenadiary.jp/">https://webmichi.hatenadiary.jp/</a>
+                        </p>
+                      </div>
+                    </div>
+
+                    <!-- <div class="work-wrap">
+                       <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><img src="./images/wordpress.jpeg" alt="Swiper01"></div>
+                            <div class="swiper-slide"><img src="./images/wp2.jpeg" alt="Swiper01"></div>
+                            <div class="swiper-slide"><img src="./images/wp3.jpeg" alt="Swiper01"></div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                      </div> 
+                      <div  class="work-comment">
+                        <p>
+                           Wordpressの自作テンプレート(ただ今作成中)。
+                        </p>
+                      </div>
+                    </div> -->
+
+            </sections> 
+
+        </section>
+
+    </main>
+
+
+   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+   <script src="./js/app.js"></script>
+</body>
+</html>

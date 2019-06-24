@@ -1,0 +1,479 @@
+@charset "UTF-8";
+html, body {
+  width: 100%;
+  font-size: 16px;
+  line-height: 1.6;
+  text-size-adjust: 100%;
+  letter-spacing: 0.1em;
+  font-family: Quicksand, 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif; }
+
+p, a {
+  -webkit-font-smoothing: antialiased; }
+
+a {
+  color: #777;
+  text-decoration: none;
+  transition: .3s; }
+
+a:hover {
+  color: #e37b89;
+  transition: .3s; }
+
+.header {
+  box-sizing: border-box;
+  width: 100%;
+  height: 60px;
+  background: #777;
+  color: #777;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+  position: fixed;
+  z-index: 2; }
+  .header .title {
+    font-size: 28px;
+    font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", メイリオ, Meiryo, "ＭＳ Ｐゴシック", sans-serif;
+    font-weight: bold; }
+  .header .title span {
+    display: inline-block;
+    color: transparent;
+    animation: blur 10s ease-out infinite; }
+  .header .title span:nth-child(1) {
+    color: #3399FF;
+    animation-delay: 0.1s; }
+  .header .title span:nth-child(2) {
+    color: #ddd;
+    animation-delay: 0.2s; }
+  .header .title span:nth-child(3) {
+    color: #FF3333;
+    animation-delay: 0.3s; }
+  .header .title span:nth-child(4) {
+    color: #3399FF;
+    animation-delay: 0.4s; }
+  .header .title span:nth-child(5) {
+    color: #ddd;
+    animation-delay: 0.5s; }
+  .header .title span:nth-child(6) {
+    color: #FF3333;
+    animation-delay: 0.6s; }
+  .header .title span:nth-child(7) {
+    color: #3399FF;
+    animation-delay: 0.7s; }
+  .header .title span:nth-child(8) {
+    color: #ddd;
+    animation-delay: 0.8s; }
+
+@keyframes blur {
+  /*opacityとtext-shadow+animationでフェードインを表現する*/
+  0% {
+    text-shadow: 0 0 100px #fff;
+    opacity: 0; }
+  5% {
+    text-shadow: 0 0 90px #fff; }
+  15% {
+    opacity: 1; }
+  20% {
+    text-shadow: 0 0 0px #fff; }
+  80% {
+    text-shadow: 0 0 0px #fff; }
+  85% {
+    opacity: 1; }
+  95% {
+    text-shadow: 0 0 90px #fff; }
+  100% {
+    text-shadow: 0 0 100px #fff;
+    opacity: 0; } }
+  @media screen and (max-width: 414px) {
+    .header {
+      height: 40px;
+      width: 100vw;
+      padding-right: 15px;
+      padding-left: 15px; } }
+
+@media screen and (max-width: 414px) {
+  .nav-menu {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: -100px;
+    background: rgba(255, 255, 255, 0.85);
+    width: 100%;
+    height: 100vh;
+    padding-top: 50px;
+    transition: .5s; }
+    .nav-menu.active {
+      transition: .5s;
+      transform: translateX(-100%);
+      z-index: 2; } }
+
+.menu {
+  display: flex;
+  align-items: center;
+  font-size: 20px; }
+  .menu-item {
+    margin-right: initial; }
+  .menu-link {
+    -webkit-font-smoothing: initial;
+    font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", メイリオ, Meiryo, "ＭＳ Ｐゴシック", sans-serif;
+    display: block;
+    color: #fff;
+    padding: 10px;
+    text-align: center; }
+  @media screen and (max-width: 414px) {
+    .menu {
+      display: block;
+      font-size: 28px; }
+      .menu-item {
+        margin-right: initial; } }
+
+.menu-humberger {
+  display: none;
+  transition: all .4s;
+  box-sizing: border-box;
+  position: relative;
+  width: 40px;
+  height: 32px;
+  z-index: 3; }
+  @media screen and (max-width: 414px) {
+    .menu-humberger {
+      display: inline-block; } }
+  .menu-humberger .humberger-bar {
+    display: inline-block;
+    transition: all .4s;
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: #fff;
+    border-radius: 4px; }
+    .menu-humberger .humberger-bar:nth-of-type(1) {
+      top: 0; }
+    .menu-humberger .humberger-bar:nth-of-type(2) {
+      top: 14px; }
+    .menu-humberger .humberger-bar:nth-of-type(3) {
+      bottom: 0; }
+  .menu-humberger.active .humberger-bar:nth-of-type(1) {
+    transform: translateY(12px) rotate(-45deg); }
+  .menu-humberger.active .humberger-bar:nth-of-type(2) {
+    opacity: 0; }
+  .menu-humberger.active .humberger-bar:nth-of-type(3) {
+    transform: translateY(-15px) rotate(45deg); }
+
+/*========================================
+hero
+========================================*/
+main {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%; }
+  @media screen and (max-width: 414px) {
+    main {
+      position: absolute;
+      top: 38px;
+      left: 0;
+      width: 100%; } }
+
+.top-animation {
+  width: 100%;
+  min-height: 500px;
+  box-sizing: border-box;
+  top: 80px;
+  left: 0;
+  border: 10px solid #444; }
+  .top-animation-container {
+    min-height: 86px; }
+    .top-animation-container-thin {
+      min-height: 50px; }
+  .top-animation-color {
+    width: 100%;
+    position: relative; }
+    @media screen and (max-width: 414px) {
+      .top-animation-color {
+        position: relative; } }
+  .top-animation-blue {
+    background: #3399FF; }
+  .top-animation-white {
+    background: white; }
+  .top-animation-red {
+    background: #FF3333; }
+  .top-animation-status {
+    position: relative;
+    width: 90%;
+    text-align: center;
+    min-height: 200px;
+    margin: 0 auto 0 auto; }
+
+.acd-check {
+  display: none; }
+
+/* laeblのクラス */
+.acd-label {
+  background: #333;
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 1px;
+  padding: 20px;
+  box-shadow: 0px 9px 3px -3px rgba(0, 0, 0, 0.6);
+  -webkit-box-shadow: 0px 9px 3px -3px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 0px 9px 3px -3px rgba(0, 0, 0, 0.6); }
+  .acd-label-blue {
+    background: #3399FF; }
+  .acd-label-red {
+    background: #FF3333; }
+
+/* アコーディオンパネル */
+.acd-content {
+  border: 1px solid #333;
+  height: 0;
+  width: 100%;
+  opacity: 0;
+  padding: 0 10px;
+  transition: 0.1s;
+  /* 文書のレイアウトを崩さず不可視に */
+  visibility: hidden;
+  box-sizing: border-box;
+  position: relative; }
+  @media screen and (max-width: 414px) {
+    .acd-content {
+      box-sizing: border-box; } }
+  .acd-content-blue {
+    background: #3399FF; }
+  .acd-content-red {
+    background: #FF3333; }
+  .acd-content-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    text-align: center; }
+    .acd-content-container-slider {
+      border: 1px solid;
+      margin: 0 auto;
+      width: 646px;
+      height: 400px;
+      position: relative; }
+      @media screen and (max-width: 414px) {
+        .acd-content-container-slider {
+          width: 100%;
+          height: 310px; } }
+      .acd-content-container-slider-img {
+        width: 647px;
+        height: 400px;
+        overflow: hidden;
+        position: relative; }
+        .acd-content-container-slider-img .work-img {
+          list-style: none;
+          width: 647px;
+          height: 400px;
+          overflow: hidden;
+          background: #777;
+          float: left; }
+          @media screen and (max-width: 414px) {
+            .acd-content-container-slider-img .work-img {
+              width: 333px;
+              height: 331px; } }
+  .acd-content .mywork {
+    width: 100%;
+    height: 100%; }
+    @media screen and (max-width: 414px) {
+      .acd-content .mywork {
+        width: 100%;
+        height: 100%; } }
+  .acd-content-prof {
+    border-radius: 50%;
+    width: 150px; }
+    @media screen and (max-width: 414px) {
+      .acd-content-prof {
+        position: absolute;
+        top: 25px;
+        left: 100px; } }
+  .acd-content-detail {
+    min-height: 100px;
+    color: white;
+    font-size: 24px;
+    word-break: break-word;
+    text-align: center; }
+    @media screen and (max-width: 414px) {
+      .acd-content-detail {
+        position: absolute;
+        top: 180px;
+        left: 10px;
+        padding: 10px;
+        box-sizing: border-box; } }
+
+.acd-check:checked + .acd-label + .acd-content {
+  min-height: 250px;
+  height: auto !important;
+  height: 250px;
+  overflow-y: scroll;
+  width: 100%;
+  box-sizing: border-box;
+  opacity: 1;
+  padding: 10px;
+  transition: .7s;
+  visibility: visible; }
+  @media screen and (max-width: 414px) {
+    .acd-check:checked + .acd-label + .acd-content {
+      min-height: 200px;
+      overflow-y: scroll; } }
+
+/*========================================
+container
+========================================*/
+.container {
+  width: 980px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 80px;
+  padding-bottom: 120px; }
+  @media screen and (max-width: 414px) {
+    .container {
+      width: 100%; } }
+  .container-fluid {
+    width: 100%; }
+  .container-title {
+    font-family: "Amatic SC", cursive;
+    text-align: center;
+    font-size: 38px;
+    margin-bottom: 40px; }
+    @media screen and (max-width: 414px) {
+      .container-title {
+        width: 70%;
+        margin-right: auto;
+        margin-left: auto;
+        margin-bottom: 30px; } }
+  @media screen and (max-width: 414px) {
+    .container-body {
+      padding-left: 15px;
+      padding-right: 15px; } }
+  .container-ornament .container-title span {
+    display: inline-block;
+    background: #fff;
+    padding: 0 10px;
+    position: relative;
+    z-index: 1; }
+  .container-ornament .container-title:before, .container-ornament .container-title:after {
+    border-top: 1px dotted black;
+    content: "";
+    display: block;
+    position: relative;
+    z-index: 0; }
+  .container-ornament .container-title:before {
+    top: 28px; }
+  .container-ornament .container-title:after {
+    top: -28px; }
+
+#work-detail {
+  background: #FF3333;
+  box-sizing: border-box; }
+  @media screen and (max-width: 414px) {
+    #work-detail {
+      padding: 10px; } }
+  #work-detail .work-detail-title {
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    box-sizing: border-box;
+    padding-top: 20px;
+    margin-left: 18px; }
+    @media screen and (max-width: 414px) {
+      #work-detail .work-detail-title {
+        margin-left: 8px; } }
+  #work-detail .work-wrap {
+    overflow: hidden;
+    margin: 60px 0;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 40px 200px; }
+    @media screen and (max-width: 414px) {
+      #work-detail .work-wrap {
+        width: 100%;
+        height: 100%;
+        padding: 0; } }
+    #work-detail .work-wrap .swiper-container {
+      width: 400px;
+      height: 300px;
+      outline: 0;
+      float: left;
+      margin-bottom: 20px; }
+      @media screen and (max-width: 414px) {
+        #work-detail .work-wrap .swiper-container {
+          width: 333px;
+          height: 331px; } }
+    #work-detail .work-wrap .work-comment {
+      font-size: 24px;
+      color: white;
+      overflow: hidden;
+      box-sizing: border-box;
+      padding: 0 30px; }
+      @media screen and (max-width: 414px) {
+        #work-detail .work-wrap .work-comment {
+          padding: 0 10px;
+          font-size: 18px; } }
+
+/*========================================
+news
+========================================*/
+.news {
+  width: 70%;
+  height: 60px;
+  overflow-y: scroll;
+  margin: 0 auto;
+  padding: 15px 20px; }
+
+/*========================================
+ユーティリティ
+========================================*/
+.bgColor-common {
+  background: #f8f7fc;
+  box-shadow: 0px 0px 8px 2px #ddd inset; }
+
+.fa:hover {
+  cursor: pointer; }
+
+.fa-angle-down {
+  font-family: "FontAwesome";
+  position: absolute;
+  left: 50%; }
+  @media screen and (max-width: 414px) {
+    .fa-angle-down {
+      position: relative;
+      left: 49%;
+      top: 25px; } }
+  .fa-angle-down:hover {
+    cursor: pointer; }
+
+.fa-angle-left {
+  position: absolute;
+  top: 45%;
+  left: 0;
+  color: white;
+  z-index: 1; }
+
+.fa-angle-right {
+  position: absolute;
+  top: 45%;
+  right: 0;
+  color: white;
+  z-index: 1; }
+  @media screen and (max-width: 414px) {
+    .fa-angle-right {
+      position: absolute;
+      left: 95%; } }
+
+.fa-laptop {
+  color: white;
+  font-family: "FontAwesome"; }
+  @media screen and (max-width: 414px) {
+    .fa-laptop {
+      position: absolute;
+      top: 0;
+      left: 110px; } }
+
+.swiper-slide img {
+  width: 100%;
+  height: 100%; }

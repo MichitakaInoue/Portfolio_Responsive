@@ -1,0 +1,609 @@
+
+//ブレークポイント、
+$breakpoints:(
+    'sm': 'screen and (max-width: 414px)',
+    'md': 'screen and (max-width: 768px)',
+    'lg': 'screen and (max-width: 1000px)',
+    'xl': 'screen and (max-widh: 1200px)'
+) !default;
+
+
+//mixin
+@mixin mq($breakpoint: sm){
+    @media #{map-get($breakpoints, $breakpoint)} {
+        @content; 
+    } 
+}
+
+
+//メインカラー　サブカラー
+$font-color_default: #777;
+$font-color_sub: #e37b89; // TODO:リファクタ必要
+$font-color-white: white;
+$bg-color_gray:  #f8f7fc;
+
+//ピクセル
+//site-width
+//フォントサイズ 大中小 デフォルト
+//大 l xl xxl 3l
+
+$site-width : 980px;
+$font-size_default: 16px;
+$font-size-s:14px;
+$font-size-m:18px;
+$font-size-l:20px;
+$font-size-xl:24px;
+$font-size-xxl:28px;
+$font-size-3l:38px;
+
+
+//スペース　大中小
+//大 l xl xxl 3l
+$space-s:5px;
+$space-m:10px;
+$space-l:15px;
+$space-xl:20px;
+$space-xxl:30px;
+$space-3l:40px;
+
+
+$font-family_corp: 'Amatic SC', cursive;
+$font-family_retrip: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', メイリオ, Meiryo, 'ＭＳ Ｐゴシック', sans-serif;
+
+
+html, body{
+    width: 100%;
+    font-size: $font-size_default;
+    line-height: 1.6;
+    //モバイル端末で使われる拡大アルゴリズム
+    text-size-adjust: 100%;
+  //文字の間隔
+    letter-spacing: 0.1em;
+    font-family: Quicksand, 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif; // TODO:リファクタ必要（変数にする）
+}
+
+p, a{
+
+    -webkit-font-smoothing:antialiased;
+}
+
+a{
+    color: $font-color_default;
+    text-decoration: none;
+    transition: .3s;
+}
+
+a:hover{
+    color: $font-color-sub;
+    transition: .3s;
+}
+
+
+.header{
+    box-sizing: border-box;
+    width: 100%;
+    height: 60px;
+    background: #777;
+    color: $font-color_default;
+    display: flex;
+    // vertical-align: center;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 $space_xxl;
+    position: fixed;
+    z-index: 2;
+    .title{
+        font-size: $font-size-xxl;
+        font-family: $font-family_retrip;
+        font-weight: bold;
+    }
+    .title span{
+        display: inline-block;
+        color: transparent;
+        animation: blur 10s ease-out infinite;
+    }
+    //トリコロールカラー
+    .title span:nth-child(1){color:#3399FF; animation-delay: 0.1s; }
+    .title span:nth-child(2){color: #ddd; animation-delay: 0.2s;}
+    .title span:nth-child(3){color:#FF3333; animation-delay: 0.3s; }
+    .title span:nth-child(4){color:#3399FF; animation-delay: 0.4s; }
+    .title span:nth-child(5){color: #ddd; animation-delay: 0.5s;}
+    .title span:nth-child(6){color:#FF3333; animation-delay: 0.6s;}
+    .title span:nth-child(7){color:#3399FF; animation-delay: 0.7s;}
+    .title span:nth-child(8){color: #ddd;animation-delay: 0.8s;}
+
+    @keyframes blur {/*opacityとtext-shadow+animationでフェードインを表現する*/
+    0%    {text-shadow:  0 0 100px #fff; opacity:0;}
+    5%    {text-shadow:  0 0 90px #fff;}
+    15%    {opacity: 1;}
+    20%    {text-shadow:  0 0 0px #fff;}
+    80%    {text-shadow:  0 0 0px #fff;}
+    85%    {opacity: 1;}
+    95%    {text-shadow:  0 0 90px #fff;}
+    100%  {text-shadow:  0 0 100px #fff; opacity:0;}
+    }
+
+    @include mq(){
+        height: 40px;
+        width: 100vw;
+        padding-right: $space-l;
+        padding-left: $space-l;
+    }
+}
+
+
+
+
+//メニュー 　スマホ
+.nav-menu{
+    @include mq(){
+        //スマホのnav-manuはcontainerの@includeを考えてから設定するf
+        display: none;
+        position: absolute;
+        top: 0;
+        right: -100px;
+        background: rgba(255, 255, 255, .85);
+        width: 100%;
+        height: 100vh;
+        padding-top: 50px;
+        transition: .5s;
+
+        &.active{
+            transition: .5s;
+            transform: translateX(-100%);
+            z-index: 2;
+        }
+    }
+}
+
+
+.menu{
+    display: flex;
+    align-items: center;
+    font-size: $font-size-l;
+    &-item{
+        margin-right: initial;
+    }
+    &-link{
+        -webkit-font-smoothing:initial;
+        font-family: $font-family_retrip;
+        display: block;
+        color: #fff;
+        padding: $space-m;
+        text-align: center;
+    }
+    @include mq(){
+        display: block;
+        font-size: $font-size-xxl;
+        &-item{
+            margin-right: initial;
+        }
+    }
+}
+
+//ハンバーガーメニュー
+.menu-humberger{
+    display: none;
+    @include mq(){
+        display: inline-block;
+    }
+    transition: all .4s;
+    box-sizing: border-box;
+    position: relative;
+    width: 40px;
+    height: 32px;
+    z-index: 3;
+    .humberger-bar{
+        display: inline-block;
+        transition: all .4s;
+        box-sizing: border-box;
+        position: absolute;
+        left: 0;
+        width:100%;
+        height: 4px;
+        background: #fff; ;
+        border-radius: 4px;
+
+        &:nth-of-type(1){
+            top: 0;
+        }
+        &:nth-of-type(2){
+            top: 14px;
+        }
+        &:nth-of-type(3){
+            bottom: 0;
+        }
+    }
+    &.active .humberger-bar{
+        &:nth-of-type(1){
+            transform: translateY(12px) rotate(-45deg);
+        }
+        &:nth-of-type(2){
+            opacity: 0;
+        }
+        &:nth-of-type(3){
+            transform: translateY(-15px) rotate(45deg);
+        }
+    }
+}
+
+/*========================================
+hero
+========================================*/
+main{
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    @include mq(){
+    position: absolute;
+    top: 38px;
+    left: 0;
+    width: 100%; 
+    }
+}
+// トップのアニメーション
+.top-animation{
+    // あとで消す
+    width: 100%;
+    min-height: 500px;
+    box-sizing: border-box;
+    top:80px;
+    left: 0;
+    border: 10px solid #444;
+    &-container{
+        min-height: 86px;
+        &-thin{
+            min-height: 50px;
+        }
+    }
+    &-color{
+        width: 100%;
+        position: relative;
+        @include mq(){
+            position: relative;
+        }
+    }
+    
+    &-blue{
+        background: #3399FF;
+        
+    }
+    &-white{
+        background: white;
+    }
+    &-red{
+        background:#FF3333;
+    }
+    &-status{
+        position: relative;
+        width: 90%;
+        text-align: center;
+        min-height: 200px;
+        margin: 0 auto 0 auto;
+    }
+}
+//アコーディオンパネル
+.acd-check{
+    display: none;
+}
+/* laeblのクラス */
+.acd-label{
+    background: #333;
+    color: #fff;
+    font-size: $font-size-xl;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 1px;
+    padding: 20px;
+    box-shadow: 0px 9px 3px -3px rgba(0,0,0,0.6);
+    -webkit-box-shadow: 0px 9px 3px -3px rgba(0,0,0,0.6);
+    -moz-box-shadow: 0px 9px 3px -3px rgba(0,0,0,0.6);
+    &-blue{
+        background: #3399FF;
+    }
+    &-red{
+        background: #FF3333;
+    }
+}
+/* アコーディオンパネル */
+.acd-content{
+    border: 1px solid #333;
+    height: 0;
+    width: 100%;
+    opacity: 0;
+    padding: 0 10px;
+    transition: 0.1s;
+     /* 文書のレイアウトを崩さず不可視に */
+    visibility: hidden;
+    box-sizing: border-box;
+    position: relative;
+    @include mq(){
+        box-sizing: border-box;
+    }
+    &-blue{
+        background: #3399FF;
+    }
+    &-red{
+        background: #FF3333;
+    }
+    &-container{
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        text-align: center;
+        &-slider{
+            border: 1px solid;
+            margin: 0 auto;
+            width: 646px;
+            height: 400px;
+            position: relative;
+            @include mq(){
+                width: 100%;
+                height: 310px;
+            }
+            &-img{
+                width: 647px;
+                height: 400px;
+                overflow: hidden;
+                position: relative;
+                @include mq(){
+                    // width: 333px;
+                }
+                .work-img{
+                    // 消す
+                    list-style: none;
+                    width: 647px;
+                    height: 400px;
+                    overflow: hidden;
+                    background: #777;
+                    float: left;
+                    @include mq(){
+                        width: 333px;
+                        height: 331px;
+                    }
+                }
+            }
+        }
+    }
+    .mywork{
+        width: 100%;
+        height: 100%;
+        @include mq(){
+            width: 100%;
+            height: 100%;
+        }
+    }
+    &-prof{
+        border-radius: 50%;
+        width: 150px;
+        @include mq(){
+         position: absolute;
+         top: 25px;
+         left: 100px;
+        }
+    }
+    &-detail{
+        min-height: 100px;
+        color: $font-color-white;
+        font-size: $font-size-xl;
+        word-break: break-word;
+        text-align: center;
+        @include mq(){
+            position: absolute;
+            top: 180px;
+            left: 10px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+    }
+}
+
+
+
+//アコーディオンパネル
+  .acd-check:checked + .acd-label + .acd-content{
+    min-height: 250px;
+    height: auto !important;
+    height: 250px;
+    overflow-y: scroll;
+    @include mq(){
+        min-height: 200px;
+        overflow-y: scroll;
+    }
+    width: 100%;
+    box-sizing: border-box;
+    opacity: 1;
+    padding: 10px;
+    transition: .7s;
+    visibility: visible;
+}
+
+/*========================================
+container
+========================================*/
+.container{
+    //pc
+    width: $site-width;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 80px;
+    padding-bottom: 120px;
+    //スマホの場合、100%;
+    @include mq(){
+        width: 100%;
+    }
+    &-fluid{
+        width: 100%;
+    }
+    &-title{
+        font-family: $font-family_corp;
+        text-align: center;
+        font-size: $font-size-3l;
+        margin-bottom: $space-3l;
+
+        @include mq(){
+            width: 70%;
+            margin-right: auto;
+            margin-left: auto;
+            margin-bottom: 30px;
+        }
+    }
+    &-body{
+        @include mq(){
+            padding-left: $space-l;
+            padding-right: $space-l;
+        }
+    }
+    &-ornament{
+        .container-title{
+            span{ //TODO 
+                display: inline-block;
+                background: #fff;
+                padding: 0 10px;
+                position: relative;
+                z-index: 1;
+            }
+            &:before, &:after{
+            border-top: 1px dotted black;
+            content: "";
+            display: block;
+            position: relative;
+            z-index: 0;
+        }   
+        &:before {
+            top: 28px;
+        }
+        &:after{
+            top: -28px;
+        }
+      }
+    }
+}
+
+#work-detail{
+    background: #FF3333;
+    box-sizing: border-box;
+    @include mq(){
+        padding: 10px;
+    }
+    .work-detail-title{
+        color: #fff;
+        font-size: $font-size-xl;
+        font-weight: bold;
+        box-sizing: border-box;
+        padding-top: 20px;
+        margin-left: 18px;
+        @include mq(){
+            margin-left: 8px;
+        }
+    }
+    .work-wrap{
+        overflow: hidden;
+        margin: 60px 0;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 40px 200px;
+        @include mq(){
+            width: 100%;
+            height: 100%;
+            padding: 0;
+        }
+        .swiper-container {
+            width: 400px;
+            height: 300px;
+            outline: 0;
+            float: left;
+            margin-bottom: 20px;
+            @include mq(){
+                width: 333px;
+                height:331px;
+            }
+        }
+        .work-comment{
+            font-size: $font-size-xl;
+            color: white;
+            overflow: hidden;
+            box-sizing: border-box;
+            padding: 0 30px;
+            @include mq(){
+                padding: 0 10px;
+                font-size: $font-size-m;
+            }
+        }
+    }
+}
+
+
+
+/*========================================
+news
+========================================*/
+.news{
+    width: 70%;
+    height: 60px;
+    overflow-y: scroll;
+    margin: 0 auto;
+    padding: $space-l $space-xl;
+}
+
+
+
+
+/*========================================
+ユーティリティ
+========================================*/
+.bgColor-common{
+    background: $bg-color_gray;
+    box-shadow: 0px 0px 8px 2px #ddd inset; 
+}
+
+//icon
+.fa:hover{
+    cursor: pointer;
+}
+.fa-angle-down{
+   font-family: "FontAwesome";
+   position: absolute;
+   left: 50%;
+   @include mq(){
+      position: relative; 
+      left: 49%;
+      top: 25px;
+   }
+   &:hover{
+       cursor: pointer;
+   }
+}
+.fa-angle-left{
+    position: absolute;
+    top: 45%;
+    left: 0;
+    color: white;
+    z-index: 1;
+}
+.fa-angle-right{
+    position: absolute;
+    top: 45%;
+    right: 0;
+    color: white;
+    z-index: 1;
+    @include mq(){
+        position: absolute;
+        left: 95%;
+    }
+}
+.fa-laptop{
+    color: white;
+    font-family: "FontAwesome";
+    @include mq(){
+        position: absolute;
+        top: 0;
+        left: 110px;
+    }
+}
+//work-detail
+.swiper-slide img{
+    width: 100%;
+    height: 100%;
+}
